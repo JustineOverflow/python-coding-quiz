@@ -41,39 +41,39 @@ questions = {
     },
     5: {
         "key": 5,
-        "name": "Which library could replace Express?",
-        "answer": "Koa",
-        "choices": ["Koa", "NPM", "NodeJS"]
+        "name": "which function aims at adding an element to a hashmap?",
+        "answer": "put",
+        "choices": ["add", "push", "put"]
     },
     6: {
         "key": 6,
-        "name": "Which library could replace Express?",
-        "answer": "Koa",
-        "choices": ["Koa", "NPM", "NodeJS"]
+        "name": "Which computational complexity is the most time performant?",
+        "answer": "o(logN)",
+        "choices": ["o(n)", "o(nlogN)", "o(logN)"]
     },
     7: {
         "key": 7,
-        "name": "Which library could replace Express?",
-        "answer": "Koa",
-        "choices": ["Koa", "NPM", "NodeJS"]
+        "name": "You want to access the last element added a list, you prefer to use:",
+        "answer": "stack",
+        "choices": ["Stack", "Queues", "LastIn"]
     },
     8: {
         "key": 8,
-        "name": "Which library could replace Express?",
-        "answer": "Koa",
-        "choices": ["Koa", "NPM", "NodeJS"]
+        "name": "Which of the following algorithms does not exist?",
+        "answer": "fast sort",
+        "choices": ["bubble sort", "fast sort", "selection sort"]
     },
     9: {
         "key": 9,
-        "name": "Which library could replace Express?",
-        "answer": "Koa",
-        "choices": ["Koa", "NPM", "NodeJS"]
+        "name": "in React, I can share data between different components using:",
+        "answer": "props",
+        "choices": ["route", "useState", "props"]
     },
     10: {
         "key": 10,
-        "name": "Which library could replace Express?",
-        "answer": "Koa",
-        "choices": ["Koa", "NPM", "NodeJS"]
+        "name": "Which of the following is a principle in clean code?",
+        "answer": "DRY",
+        "choices": ["DOY", "DRY", "DPY"]
     },
 }
 
