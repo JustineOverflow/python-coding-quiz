@@ -1,58 +1,101 @@
 import random
 
-from flask import Flask, jsonify
+from flask import Flask, make_response, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
+hashquestions = {}
 
 
-@app.route('/')
-def index():
-    return "Welcome to the coding quiz!"
+@app.route('/home')
+def home():
+    return "Welcome to this coding quiz!"
 
 
-questionsList = [
-    {
-        "id": 1,
+questions = {
+    1: {
+        "key": 1,
         "name": "Which of the following is not a programming language?",
         "answer": "Cobra",
         "choices": ["Cobra", "Python", "Swift"]
-    }
-]
+    },
+    2: {
+        "key": 2,
+        "name": "Which company created the library React?",
+        "answer": "Facebook",
+        "choices": ["Apple", "Microsoft", "Facebook"]
+    },
+    3: {
+        "key": 3,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+    4: {
+        "key": 4,
+        "name": "Which of the following is a non relational database?",
+        "answer": "MongoDB",
+        "choices": ["SQL", "MongoDB", "Sequelize"]
+    },
+    5: {
+        "key": 5,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+    6: {
+        "key": 6,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+    7: {
+        "key": 7,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+    8: {
+        "key": 8,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+    9: {
+        "key": 9,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+    10: {
+        "key": 10,
+        "name": "Which library could replace Express?",
+        "answer": "Koa",
+        "choices": ["Koa", "NPM", "NodeJS"]
+    },
+}
 
 
 @app.route('/quiz')
 def get_quiz():
-    question = random.choice(questionsList)
-    return jsonify(question)
+    random_key = random.choice(questions.keys())
 
-    # question =
-    # question_id = request.args.get('question_id')
-    # return '{}'.format(question)
+    while random_key in hashquestions.keys():
+        random_key = random.choice(questions.keys())
 
-    # score = 0
-    #
-    # for qItem in questionsList:
-    #     print(qItem.question)
-    #     print("Here are the possible answers:")
-    #     possible = qItem.otherAnswers + [qItem.correctAnswer]
-    #     random.shuffle(possible)
-    #     count = 0
-    #     while count < len(possible):
-    #         print(str(count + 1) + ": " + possible[count])
-    #         count += 1
-    #     print("Please enter the number of your answer:")
-    #     userAnswer = raw_input()
-    #     while not userAnswer.isdigit() or not 0 < int(userAnswer) <= len(possible):
-    #         print("Try again - please enter a valid number:")
-    #         userAnswer = raw_input()
-    #     userAnswer = int(userAnswer)
-    #     if possible[userAnswer - 1] == qItem.correctAnswer:
-    #         print("Correct answer!")
-    #         score += 1
-    #     else:
-    #         print("Wrong answer")
-    #         print("Correct answer was: " + qItem.correctAnswer)
-    #         print("")
+    question = questions[random_key]
+    hashquestions[random_key] = questions
+
+    return question
+
+
+@app.route('/check-answer')
+def check_answer():
+    guess = request.values['guess']
+    key = int(request.values['key'])
+    return str(questions[key]['answer'].lower() == guess.lower()).lower()
 
 
 if __name__ == '__main__':
