@@ -75,6 +75,13 @@ questions = {
         "answer": "DRY",
         "choices": ["DOY", "DRY", "DPY"]
     },
+
+    11: {
+        "key": 11,
+        "name": "Which of the following is not a HTTP request?",
+        "answer": "PUSH",
+        "choices": ["PUT", "PUSH", "DELETE"]
+    }
 }
 
 
