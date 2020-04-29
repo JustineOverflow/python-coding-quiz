@@ -53,7 +53,7 @@ questions = {
     },
     7: {
         "key": 7,
-        "name": "You want to access the last element added a list, you prefer to use:",
+        "name": "You want to access the last element added to a list, you prefer to use:",
         "answer": "stack",
         "choices": ["Stack", "Queues", "LastIn"]
     },
@@ -87,22 +87,15 @@ questions = {
 
 @app.route('/quiz')
 def get_quiz():
-    random_key = random.choice(questions.keys())
-
-    while random_key in hashquestions.keys():
-        random_key = random.choice(questions.keys())
-
-    question = questions[random_key]
-    hashquestions[random_key] = questions
-
-    return question
-
+    seenQuestions = map(int, request.args.get('seenQuestions').split(','))
+    return random.choice([value for key, value in questions.items() if key not in seenQuestions])
 
 @app.route('/check-answer')
 def check_answer():
     guess = request.values['guess']
     key = int(request.values['key'])
     return str(questions[key]['answer'].lower() == guess.lower()).lower()
+
 
 
 if __name__ == '__main__':
